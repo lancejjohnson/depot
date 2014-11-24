@@ -63,4 +63,12 @@ class ProductTest < ActiveSupport::TestCase
     assert product.invalid?
     assert_equal ["has already been taken"], product.errors[:title]
   end
+
+  test "product title must not be too short" do
+    @product.title = "a" * 9
+    assert @product.invalid?
+
+    @product.title = "a" * 10
+    assert @product.valid?
+  end
 end
