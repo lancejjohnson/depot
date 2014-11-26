@@ -1,4 +1,6 @@
 Depot::Application.routes.draw do
+  resources :carts
+
   # You can have the root of your site routed with "root"
   # as: option generates the helper method `store_path`
   root 'store#index', as: 'store'
