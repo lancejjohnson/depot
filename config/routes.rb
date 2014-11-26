@@ -1,4 +1,6 @@
 Depot::Application.routes.draw do
+  resources :line_items
+
   resources :carts
 
   # You can have the root of your site routed with "root"
