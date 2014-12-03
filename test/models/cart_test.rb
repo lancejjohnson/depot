@@ -1,7 +1,11 @@
 require 'test_helper'
 
 class CartTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  setup do
+    @cart = Cart.new
+  end
+
+  test 'increments the quantity of existing line item' do
+    @cart.add_product
+  end
 end
