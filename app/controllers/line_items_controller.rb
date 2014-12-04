@@ -38,7 +38,7 @@ class LineItemsController < ApplicationController
         format.html { redirect_to store_url }
         # Responds to a JavaScript request from the browser.
         # Returns a partial corresponding to the controller action.
-        format.js
+        format.js { @current_item = @line_item }
         format.json { render(
           action: 'show', status: :created, location: @line_item) }
       else
