@@ -2,7 +2,7 @@ class LineItemsController < ApplicationController
   # CurrentCart is module defined in concerns so that it's available to all
   # controllers
   include CurrentCart
-  before_action :set_cart, only: [:create]
+  before_action :set_cart, only: [:create, :decrement]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
   # GET /line_items
@@ -61,6 +61,12 @@ class LineItemsController < ApplicationController
         format.json { render json: @line_item.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def decrement
+    # TODO: The cart view doesn't update on this
+    @cart.line_items.find(params[:id]).decrement_quantity
+    redirect_to store_url
   end
 
   # DELETE /line_items/1

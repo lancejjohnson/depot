@@ -6,6 +6,6 @@ class CartTest < ActiveSupport::TestCase
   end
 
   test 'increments the quantity of existing line item' do
-    @cart.add_product
+    @cart.add_product(1)
   end
 end
