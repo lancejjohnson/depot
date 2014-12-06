@@ -61,7 +61,6 @@ class LineItemsController < ApplicationController
   end
 
   def decrement
-    # TODO: The cart view doesn't update on this
     line_item = @cart.line_items.find(params[:id])
     line_item = line_item.decrement_quantity
     respond_to do |format|
