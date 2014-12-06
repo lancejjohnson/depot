@@ -12,8 +12,9 @@ class LineItem < ActiveRecord::Base
       if item.quantity > 1
         item.quantity -= 1
       else
-        self.destroy
+        self.class.destroy(self.id)
       end
     end
+    item
   end
 end
