@@ -1,7 +1,7 @@
 one:
   name: Dave Thomas
   address: England
-  email: dave@exmaple.org
+  email: dave@example.org
   pay_type: Check
 
 two:
