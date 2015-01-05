@@ -1,24 +1,30 @@
 Depot::Application.routes.draw do
+  # You can have the root of your site routed with "root"
+  # as: option generates the helper method `store_path`
+  root 'store#index', as: 'store'
+
+  get "admin" => 'admin#index'
+  controller :session do
+    get 'login' => :new
+    post 'login' => :create
+    delete 'logout' => :destroy
+  end
+
   resources :users
-
+  resources :carts
   resources :orders
-
   resources :line_items do
     member do
       put 'decrement'
     end
   end
 
-  resources :carts
-
-  # You can have the root of your site routed with "root"
-  # as: option generates the helper method `store_path`
-  root 'store#index', as: 'store'
-
   get "store/index"
   resources :products do
     get :who_bought, on: :member
   end
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
