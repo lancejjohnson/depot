@@ -1,4 +1,5 @@
 class LineItemsController < ApplicationController
+  skip_before_action :authorize, only: :create
   # CurrentCart is module defined in concerns so that it's available to all
   # controllers
   include CurrentCart

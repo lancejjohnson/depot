@@ -1,4 +1,7 @@
 class SessionController < ApplicationController
+  # Whitelist the session controller, else no one would ever be able to login.
+  skip_before_action :authorize
+
   def new
   end
 
