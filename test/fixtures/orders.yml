@@ -1,0 +1,11 @@
+one:
+  name: Dave Thomas
+  address: England
+  email: dave@example.org
+  pay_type: Check
+
+two:
+  name: DHH
+  address: Spain
+  email: dhh@example.org
+  pay_type: Credit card
