@@ -22,7 +22,7 @@ class UsersController < ApplicationController
       if @user.save
         format.html {
           redirect_to(
-            users_url, 
+            users_url,
             notice: "User #{@user.name} was successfully created."
           )
         }
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
       if @user.update(user_params)
         format.html {
           redirect_to(
-            users_url, 
+            users_url,
             notice: "User #{@user.name} was successfully updated."
           )
         }
@@ -52,7 +52,13 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
+    begin
+      @user.destroy
+      flash[:notice] = "User #{@user.name} deleted"
+    rescue StandardError => e
+      flash[:notice] = e.message
+    end
+
     respond_to do |format|
       format.html { redirect_to users_url }
       format.json { head :no_content }
